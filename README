@@ -1,0 +1,183 @@
+# Automobile Maintenance Tracker
+
+## Pre-install
+
+1. install jdk8
+    - set `JAVA_HOME` environment variable
+	
+2. install MAVEN
+    		
+    	
+## Install
+
+	//$ git clone https://github.com/a-hosseini/Automobile-Maintenance-Tracker.git
+	
+
+## Run Test Cases
+	$ mvn test
+
+
+## Build & Run
+
+1. Created a Spring Boot project for this application.
+2. Import the project in an IDE like Eclipse. 
+3. Open pom.xml file and do maven install to download all the dependancies.
+4. Build and run the project from the IDE.
+4. Go to /cardemo/src/main/java/com/automobile/cardemo/CardemoApplication.java  and rightclick on CardemoApplication and run as Java Application
+5. Use Postman to Get, Post, Put and Delete entities.
+6. There is no UI for this application. The server is http://localhost:8080
+7. A csv file (src/main/resources/CarList.csv) is used as database for simplicity.
+
+### Pre-Requisites for testing through ReST
+Under the Request Headers 
+
+Key					Value
+Accept				application/json
+Content-Type		application/json
+
+### Insert: How to insert a new car into the ReST endpoint:
+http://localhost:8080/insertCarDetails
+
+In the request body use the below json format to insert the car entity
+
+{
+  "vin": "k11",
+  "model": "Camry2",
+  "year": 2022,
+  "odometerReading": 1999,
+  "color": "Blue",
+  "make": "EXL",
+  "carType": "Electric"
+}
+
+Expected Response:
+
+If the entity is inserted correct, expect a "Success" message in the Response Body
+If the entity is not inserted, expect a "Error Message" in the Response Body
+
+### Find: How to Get Car details for a given "vin" from the ReST endpoint:
+
+http://localhost:8080/getCarDetailsByVin?vin=k11
+
+Expected Response: 
+
+1. If there is an entity for the given vin then the Response body is in Json Format as below
+{
+    "vin": "k11",
+    "model": "Camry2",
+    "year": 2022,
+    "odometerReading": 1999,
+    "color": "Blue",
+    "make": "EXL",
+    "carType": "Electric"
+}
+
+2. If there is no entity found for the given vin then then expect an error message as "getCarDetailsByVin- No record found for given VIN"
+
+### Find: How to Get all the list of entities from the file:
+
+http://localhost:8080/getAllCarDetails
+
+Expected Response: 
+
+1. Displays list of all entries from the data base into the Response body in Json Format as below
+[
+    {
+        "vin": "K10",
+        "model": "Camry2",
+        "year": 2022,
+        "odometerReading": 1999,
+        "color": "Blue",
+        "make": "EXL",
+        "carType": "Electric"
+    },
+    {
+        "vin": "k11",
+        "model": "Camry2",
+        "year": 2022,
+        "odometerReading": 1999,
+        "color": "Blue",
+        "make": "EXL",
+        "carType": "Electric"
+    }
+]
+
+### Update: How to Put a new entity into the ReST endpoint:
+http://localhost:8080/updateCarDetails
+
+1. In the request body use the below json format to update an existing car entity
+{
+    "vin": "k11",
+    "model": "Camry2-Updated",
+    "year": 2022,
+    "odometerReading": 1999,
+    "color": "Black",
+    "make": "EXL",
+    "carType": "Electric"
+}
+
+Expected Response: 
+
+1. If there is an entity for the given vin then the Response body is in Json Format as below
+{
+    "vin": "k11",
+    "model": "Camry2-Updated",
+    "year": 2022,
+    "odometerReading": 1999,
+    "color": "Black",
+    "make": "EXL",
+    "carType": "Electric"
+}
+
+2. If there is no entity found for the given vin then then expect an error message as "updateCarDetails failed - No record found for given VIN"
+
+
+### Delete: How to Delete an existing entity from data base:
+http://localhost:8080/deleteCarDetailsByVin?vin=k11
+
+
+{
+    "vin": "ABC",
+    "make": "Honda",
+    "model": "Accord",
+    "year": 2010,
+    "mileage": 100000,
+    "color": "Blue",
+    "trim": "Ex-V4",
+	type: "Diesel"
+}
+
+Expected Response:
+
+1. If the entity is deleted, expect a "Success" message in the Response Body
+2. If there is no entity found for the given vin then then expect an error message as "deleteCarDetailsByVin failed - No record found for given VIN"
+
+### Find: How to Get Car MaintenanceDetails for a given "vin" from the ReST endpoint:
+
+http://localhost:8080/getCarMaintenanceDetailsByVin?vin=K10
+
+Expected Response: 
+
+1. For the given vin if it is an Electric Car,  then the Response body is in Json Format as below
+[
+    "Battery Charger Check",
+    "Tire Rotation",
+    "Car Wash"
+]
+
+2. For the given vin if it is an Diesel Car,  then the Response body is in Json Format as below
+[
+    "Tire Rotation",
+    "Car Wash",
+    "Oil Change"
+]
+3. For the given vin if it is an Gas Car,  then the Response body is in Json Format as below
+[
+    "Tire Rotation",
+    "Car Wash",
+    "Oil Change"
+]
+
+2. If there is no entity found for the given vin then then expect an error message as "getCarDetailsByVin- No record found for given VIN"
+
+
