@@ -16,6 +16,9 @@
 ## Run Test Cases
 	$ mvn test
 
+## All my Unit Test Cases are under /cardemo/src/test/
+
+
 
 ## Build & Run
 
@@ -23,10 +26,11 @@
 2. Import the project in an IDE like Eclipse. 
 3. Open pom.xml file and do maven install to download all the dependancies.
 4. Build and run the project from the IDE.
-4. Go to /cardemo/src/main/java/com/automobile/cardemo/CardemoApplication.java  and rightclick on CardemoApplication and run as Java Application
-5. Use Postman to Get, Post, Put and Delete entities.
-6. There is no UI for this application. The server is http://localhost:8080
-7. A csv file (src/main/resources/CarList.csv) is used as database for simplicity.
+5. Run the application Using TestNG Unit frame work for running Unit Test Cases
+6. Go to /cardemo/src/main/java/com/automobile/cardemo/CardemoApplication.java  and rightclick on CardemoApplication and run as Java Application
+7. Use Postman to Get, Post, Put and Delete entities.
+8. There is no UI for this application. The server is http://localhost:8080
+9. A csv file (src/main/resources/CarList.csv) is used as database for simplicity.
 
 ### Pre-Requisites for testing through ReST
 Under the Request Headers 
